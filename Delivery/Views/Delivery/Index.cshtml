@@ -1,0 +1,141 @@
+﻿@model Delivery.Models.Delivery
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<style>
+    .validation-summary-valid {
+        display: none;
+    }
+</style>
+
+<h2>Index</h2>
+
+
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4>Feedback</h4>
+            <hr />
+
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                @Html.ValidationSummary(false, "Ошибки валидации:", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.IIN, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.IIN, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.FormOfPayment, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EnumDropDownListFor(
+x => x.Sender.FormOfPayment,
+new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.Email, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.Address, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.DesiredDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.DesiredDate, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Sender.MaxTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Sender.MaxTime, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Cargo.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.Cargo.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Cargo.CityOfDestination, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EnumDropDownListFor(
+x => x.Cargo.CityOfDestination,
+new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Cargo.TariffType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EnumDropDownListFor(
+x => x.Cargo.TariffType,
+new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.Cargo.TypeOfDeparture, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EnumDropDownListFor(
+ x => x.Cargo.TypeOfDeparture,
+ new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
